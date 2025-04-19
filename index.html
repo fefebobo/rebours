@@ -58,7 +58,7 @@
             const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
             const seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
-            countdownElement.innerHTML = `${days} jours ${hours}h${minutes}m${seconds}s`;
+            countdownElement.innerHTML = `${days} jours ${hours}h ${minutes}m ${seconds}s`;
 
             // Approximation mois + jours
             const nowDate = new Date();
@@ -72,7 +72,7 @@
                 remainingDays += prevMonth;
             }
 
-            approxElement.innerHTML = `soit environ : ${months} mois, ${remainingDays} jours, ${hours} heures`;
+            approxElement.innerHTML = `soit environ ${months} mois, ${remainingDays} jours, ${hours} heures`;
         }
 
         const timer = setInterval(updateCountdown, 1000);
