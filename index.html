@@ -1,0 +1,82 @@
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>New life</title>
+    <style>
+        body {
+            background-color: #f5f7fa;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            text-align: center;
+            color: #2c3e50;
+        }
+        h1 {
+            font-size: 2.5em;
+            margin-bottom: 20px;
+            color: #2980b9;
+        }
+        #countdown {
+            font-size: 2em;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        #approx {
+            font-size: 1.2em;
+            color: #34495e;
+        }
+    </style>
+</head>
+<body>
+    <h1>New life</h1>
+    <div id="countdown">Chargement...</div>
+    <div id="approx"></div>
+
+    <script>
+        const countdownElement = document.getElementById("countdown");
+        const approxElement = document.getElementById("approx");
+        const targetDate = new Date("2025-09-12T18:00:00+02:00").getTime();
+
+        function updateCountdown() {
+            const now = new Date().getTime();
+            const distance = targetDate - now;
+
+            if (distance <= 0) {
+                countdownElement.innerHTML = "Nouveau départ lundi";
+                approxElement.innerHTML = "";
+                clearInterval(timer);
+                return;
+            }
+
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            countdownElement.innerHTML = `${days}j ${hours}h ${minutes}m ${seconds}s`;
+
+            // Approximation mois + jours
+            const nowDate = new Date();
+            const target = new Date("2025-09-12T18:00:00+02:00");
+            let months = (target.getFullYear() - nowDate.getFullYear()) * 12 + (target.getMonth() - nowDate.getMonth());
+            let remainingDays = target.getDate() - nowDate.getDate();
+
+            if (remainingDays < 0) {
+                months -= 1;
+                const prevMonth = new Date(target.getFullYear(), target.getMonth(), 0).getDate();
+                remainingDays += prevMonth;
+            }
+
+            approxElement.innerHTML = `Soit environ : ${months} mois, ${remainingDays} jours, ${hours} heures, ${seconds} secondes`;
+        }
+
+        const timer = setInterval(updateCountdown, 1000);
+        updateCountdown();
+    </script>
+</body>
+</html>
