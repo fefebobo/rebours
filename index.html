@@ -3,18 +3,35 @@
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <title>sahar</title>
+    <title>Nouvelle aventure</title>
     <style>
         body {
             background-color: #f5f7fa;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             display: flex;
-            flex-direction: column;
             align-items: center;
             justify-content: center;
             height: 100vh;
-            text-align: center;
             color: #2c3e50;
+            margin: 0;
+        }
+        .container {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: center;
+            gap: 40px;
+            flex-wrap: wrap;
+            padding: 20px;
+        }
+        .image-container img {
+            max-width: 300px;
+            height: auto;
+            border-radius: 12px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        }
+        .countdown-container {
+            text-align: center;
         }
         h1 {
             font-size: 2.5em;
@@ -33,9 +50,16 @@
     </style>
 </head>
 <body>
-    <h1>Changements à venir d'ici</h1>
-    <div id="countdown">Chargement...</div>
-    <div id="approx"></div>
+    <div class="container">
+        <div class="image-container">
+            <img src="357b31a3-a244-4010-82ed-44a1bbe0909b.png" alt="Fleurs">
+        </div>
+        <div class="countdown-container">
+            <h1>Nouvelle aventure</h1>
+            <div id="countdown">Chargement...</div>
+            <div id="approx"></div>
+        </div>
+    </div>
 
     <script>
         const countdownElement = document.getElementById("countdown");
@@ -58,7 +82,7 @@
             const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
             const seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
-            countdownElement.innerHTML = `${days} jours ${hours}h ${minutes}m ${seconds}s`;
+            countdownElement.innerHTML = `${days}j ${hours}h ${minutes}m ${seconds}s`;
 
             // Approximation mois + jours
             const nowDate = new Date();
@@ -72,7 +96,7 @@
                 remainingDays += prevMonth;
             }
 
-            approxElement.innerHTML = `soit environ ${months} mois et ${remainingDays} jours`;
+            approxElement.innerHTML = `soit environ : ${months} mois, ${remainingDays} jours, ${minutes} minutes`;
         }
 
         const timer = setInterval(updateCountdown, 1000);
