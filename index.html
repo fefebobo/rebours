@@ -3,7 +3,7 @@
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <title>Nouvelle aventure</title>
+    <title>atarashii shigoto</title>
     <style>
         body {
             background-color: #f5f7fa;
@@ -82,7 +82,7 @@
             const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
             const seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
-            countdownElement.innerHTML = `${days}jours, ${hours} heures, ${minutes} minutes et ${seconds}s`;
+            countdownElement.innerHTML = `${days} jours, ${hours} heures, ${minutes} minutes et ${seconds} secondes`;
 
             // Approximation mois + jours
             const nowDate = new Date();
