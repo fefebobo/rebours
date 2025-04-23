@@ -2,38 +2,82 @@
 <html lang="fr">
 <head>
   <meta charset="UTF-8">
-  <title>Déchiffreur simple</title>
+  <title>Déchiffreur</title>
   <style>
+    * {
+      box-sizing: border-box;
+    }
+
     body {
-      font-family: Arial, sans-serif;
-      padding: 2em;
-      background: #f4f4f4;
+      margin: 0;
+      padding: 0;
+      height: 100vh;
+      background: linear-gradient(to bottom right, #e0f7fa, #b2ebf2);
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
     }
-    input, #output {
+
+    .container {
+      background: white;
+      padding: 2em 3em;
+      border-radius: 15px;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+      text-align: center;
+      max-width: 400px;
+      width: 100%;
+    }
+
+    h1 {
+      margin-bottom: 1em;
+      color: #00796b;
+    }
+
+    label {
       display: block;
-      margin: 1em 0;
-      padding: 0.5em;
-      width: 300px;
-      font-size: 1em;
-      text-transform: uppercase;
-    }
-    #output {
+      margin-top: 1em;
       font-weight: bold;
-      background-color: #e0e0e0;
-      border: 1px solid #ccc;
+      color: #004d40;
+    }
+
+    input {
+      width: 100%;
+      padding: 0.7em;
+      margin-top: 0.5em;
+      border: 1px solid #b2dfdb;
+      border-radius: 8px;
+      text-transform: uppercase;
+      font-size: 1em;
+      background: #e0f2f1;
+    }
+
+    #output {
+      margin-top: 1.5em;
+      padding: 1em;
+      background-color: #b2dfdb;
+      border-radius: 10px;
+      border: 1px solid #009688;
+      font-size: 1.2em;
+      font-weight: bold;
+      color: #004d40;
+      min-height: 1.5em;
     }
   </style>
 </head>
 <body>
-  <h1>Déchiffreur</h1>
-  <label for="wordInput">Mot :</label>
-  <input type="text" id="wordInput" oninput="decrypt()" />
+  <div class="container">
+    <h1>🔐 Déchiffreur</h1>
 
-  <label for="passwordInput">Mot de passe :</label>
-  <input type="password" id="passwordInput" oninput="decrypt()" />
+    <label for="wordInput">Mot :</label>
+    <input type="text" id="wordInput" oninput="decrypt()" />
 
-  <label for="output">Mot déchiffré :</label>
-  <div id="output">...</div>
+    <label for="passwordInput">Mot de passe :</label>
+    <input type="password" id="passwordInput" oninput="decrypt()" />
+
+    <label for="output">Mot déchiffré :</label>
+    <div id="output">...</div>
+  </div>
 
   <script>
     function decrypt() {
