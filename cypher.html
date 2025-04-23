@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Déchiffreur simple</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 2em;
+      background: #f4f4f4;
+    }
+    input, #output {
+      display: block;
+      margin: 1em 0;
+      padding: 0.5em;
+      width: 300px;
+      font-size: 1em;
+      text-transform: uppercase;
+    }
+    #output {
+      font-weight: bold;
+      background-color: #e0e0e0;
+      border: 1px solid #ccc;
+    }
+  </style>
+</head>
+<body>
+  <h1>Déchiffreur</h1>
+  <label for="wordInput">Mot :</label>
+  <input type="text" id="wordInput" oninput="decrypt()" />
+
+  <label for="passwordInput">Mot de passe :</label>
+  <input type="password" id="passwordInput" oninput="decrypt()" />
+
+  <label for="output">Mot déchiffré :</label>
+  <div id="output">...</div>
+
+  <script>
+    function decrypt() {
+      const word = document.getElementById('wordInput').value.toUpperCase();
+      const password = document.getElementById('passwordInput').value.toUpperCase();
+      const output = document.getElementById('output');
+
+      if (word === "RAPIDE" && password === "ELECTRIQUE") {
+        output.textContent = "TAIWAN";
+      } else {
+        const fakeWords = ["NUAGE", "BULLE", "ZEBRA", "FLEUR", "LUMIERE", "VOYAGE"];
+        const randomWord = fakeWords[Math.floor(Math.random() * fakeWords.length)];
+        output.textContent = randomWord;
+      }
+    }
+  </script>
+</body>
+</html>
