@@ -61,6 +61,12 @@
       margin-top: 20px;
       font-size: 18px;
     }
+    .labels div:first-child {
+      color: #f56565; /* Rouge doux pour "this is done" */
+    }
+    .labels div:last-child {
+      color: #48bb78; /* Vert doux pour "this is up to YOU" */
+    }
   </style>
 </head>
 <body>
@@ -71,10 +77,12 @@
   <!-- Les mois vont être ajoutés ici -->
 </div>
 
+<strong>
 <div class="labels">
-  <div>Déjà passé</div>
-  <div>Ne tient qu'à TOI</div>
+  <div>Le passé</div>
+  <div>TON futur<br>Ne tient qu'à TOI.</div>
 </div>
+</strong>
 
 <script>
   const months = ["JAN", "FÉV", "MAR", "AVR", "MAI", "JUN", "JUI", "AOÛ", "SEP", "OCT", "NOV", "DÉC"];
