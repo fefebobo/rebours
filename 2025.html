@@ -68,11 +68,12 @@
       color: #48bb78; /* Vert doux pour "this is up to YOU" */
     }
 
-  /* Ajout après tout ton autre CSS */
+    /* Ajout ou modification dans ton CSS existant */
   .life {
     margin-top: 50px;
     font-size: 60px;
     font-weight: bold;
+    animation: pulse 2s infinite;
   }
   .life a {
     color: white;
@@ -82,6 +83,21 @@
   .life a:hover {
     color: #48bb78; /* Vert doux au survol */
     transform: scale(1.1);
+  }
+
+  @keyframes pulse {
+    0% {
+      transform: scale(1);
+      opacity: 1;
+    }
+    50% {
+      transform: scale(1.05);
+      opacity: 0.8;
+    }
+    100% {
+      transform: scale(1);
+      opacity: 1;
+    }
   }
   </style>
 </head>
