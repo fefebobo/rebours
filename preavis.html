@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fin de contrat</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: white;
+        }
+
+        h1 {
+            font-size: 3rem;
+            margin-bottom: 2rem;
+            text-align: center;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.8; }
+        }
+
+        .countdown-image {
+            width: 200px;
+            height: auto;
+            margin-bottom: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        }
+
+        .countdown-text {
+            font-size: 2rem;
+            margin-bottom: 2rem;
+            text-align: center;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            font-weight: bold;
+        }
+
+        .target-date {
+            font-size: 1.2rem;
+            margin-top: 2rem;
+            opacity: 0.8;
+            text-align: center;
+        }
+
+        .finished {
+            font-size: 2rem;
+            color: #ff6b6b;
+            text-align: center;
+            animation: blink 1s infinite;
+        }
+
+        @keyframes blink {
+            0%, 50% { opacity: 1; }
+            51%, 100% { opacity: 0.5; }
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2rem;
+            }
+            
+            .countdown-image {
+                width: 150px;
+            }
+            
+            .countdown-text {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <img src="https://i.gifer.com/origin/44/4497f1564ee5b97c73df9af25dde999f_w200.gif" alt="Animation" class="countdown-image">
+    
+    <h1>Fin de contrat</h1>
+    
+    <div id="countdown-text" class="countdown-text">
+        -- jours, -- heures, -- minutes et -- secondes
+    </div>
+
+    <div class="target-date">
+        Échéance : 20 août 2025 à 17h30
+    </div>
+
+    <script>
+        function updateCountdown() {
+            const targetDate = new Date('2025-08-20T17:30:00').getTime();
+            const now = new Date().getTime();
+            const difference = targetDate - now;
+
+            if (difference > 0) {
+                const days = Math.floor(difference / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
+                const seconds = Math.floor((difference % (1000 * 60)) / 1000);
+
+                document.getElementById('countdown-text').textContent = 
+                    `${days} jours, ${hours} heures, ${minutes} minutes et ${seconds} secondes`;
+            } else {
+                document.getElementById('countdown-text').innerHTML = '<div class="finished">Contrat terminé !</div>';
+            }
+        }
+
+        // Mettre à jour le compte à rebours immédiatement
+        updateCountdown();
+        
+        // Mettre à jour toutes les secondes
+        setInterval(updateCountdown, 1000);
+    </script>
+</body>
+</html>
